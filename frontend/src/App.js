@@ -1,11 +1,24 @@
 import './css/App.css';
+import React from 'react';
+import process from 'process';
+import {
+  createBrowserRouter,
+  RouterProvider
+} from "react-router-dom";
+
+import HomeFeedPage from './pages/HomeFeedPage';
+
+const router = createBrowserRouter([
+  {
+    path: "/",
+    element: <HomeFeedPage />
+  },
+])
 
 function App() {
   return (
-    <div className="App">
-      <header className="App-header">
-        
-      </header>
+    <div>
+      <RouterProvider router={router} />
     </div>
   );
 }
