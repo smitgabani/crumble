@@ -1,6 +1,8 @@
 import './css/HomeFeedPage.css'
 import React from 'react'
 
+import DesktopNavigation from '../components/DesktopNavigation'
+
 import Cookies from 'js-cookie'
 
 export default function HomeFeedPage() {
@@ -56,7 +58,7 @@ export default function HomeFeedPage() {
 
     return (
         <article>
-            
+            <DesktopNavigation user={user} active={'home'} setPopped={setPopped} />
         </article>
     )
     
