@@ -37,6 +37,7 @@ export default function HomeFeedPage() {
               }
         } catch (err) {
             console.error("Home activities: /api/activities/home could not be fetched due to ",err)
+            console.log(process.env.REACT_APP_BACKEND_URL)
         }
     }
 
