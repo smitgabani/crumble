@@ -1,7 +1,11 @@
 import './css/HomeFeedPage.css'
 import React from 'react'
 
-import DesktopNavigation from '../components/DesktopNavigation'
+import DesktopNavigation  from '../components/DesktopNavigation';
+import DesktopSidebar     from '../components/DesktopSidebar';
+import ActivityFeed from '../components/ActivityFeed';
+import ActivityForm from '../components/ActivityForm';
+import ReplyForm from '../components/ReplyForm';
 
 import Cookies from 'js-cookie'
 
@@ -58,7 +62,28 @@ export default function HomeFeedPage() {
 
     return (
         <article>
-            <DesktopNavigation user={user} active={'home'} setPopped={setPopped} />
+          <DesktopNavigation user={user} active={'home'} setPopped={setPopped} />
+          <div className='content'>
+            <ActivityForm  
+              popped={popped}
+              setPopped={setPopped} 
+              setActivities={setActivities} 
+            />
+            <ReplyForm 
+              activity={replyActivity} 
+              popped={poppedReply} 
+              setPopped={setPoppedReply} 
+              setActivities={setActivities} 
+              activities={activities} 
+            />
+            <ActivityFeed 
+              title="Home" 
+              setReplyActivity={setReplyActivity} 
+              setPopped={setPoppedReply} 
+              activities={activities} 
+            />
+          </div>
+          <DesktopSidebar user={user} />
         </article>
     )
     
