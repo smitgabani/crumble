@@ -1,4 +1,4 @@
-import './TrendItem.css';
+import './css/TrendItem.css';
 
 export default function TrendItem(props) {
   const commify = (n) => {

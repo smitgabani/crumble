@@ -1,4 +1,4 @@
-import './MessageGroupFeed.css';
+import './css/MessageGroupFeed.css';
 import MessageGroupItem from './MessageGroupItem';
 
 export default function MessageGroupFeed(props) {

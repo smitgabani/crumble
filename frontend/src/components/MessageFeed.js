@@ -1,4 +1,4 @@
-import './MessageFeed.css';
+import './css/MessageFeed.css';
 import MessageItem from './MessageItem';
 
 export default function MessageFeed(props) {

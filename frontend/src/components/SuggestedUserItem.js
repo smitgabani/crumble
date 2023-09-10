@@ -1,4 +1,4 @@
-import './SuggestedUserItem.css';
+import './css/SuggestedUserItem.css';
 
 export default function SugestedUserItem(props) {
   return (

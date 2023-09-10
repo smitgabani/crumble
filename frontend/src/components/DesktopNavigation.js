@@ -1,49 +1,62 @@
-import './css/DesktopNavigation.css';
-import {ReactComponent as Logo} from './svg/logo.svg';
-import DesktopNavigationLink from './DesktopNavigationLink';
+import "./css/DesktopNavigation.css";
+import { ReactComponent as Logo } from "./svg/logo.svg";
+import DesktopNavigationLink from "./DesktopNavigationLink";
 
 export default function DesktopNavigation(props) {
-    let button;
-    let profile;
-    let notificationsLink;
-    let messagesLink;
-    let profileLink;
-    if (props.user) {
-        // button = <CrudButton setPopped={props.setPopped} />;
-        // profile = <ProfileInfo user={props.user} />;
-        notificationsLink = <DesktopNavigationLink 
-          url="/notifications" 
-          name="Notifications" 
-          handle="notifications" 
-          active={props.active} />;
-        messagesLink = <DesktopNavigationLink 
-          url="/messages"
-          name="Messages"
-          handle="messages" 
-          active={props.active} />
-        profileLink = <DesktopNavigationLink 
-          url="/@andrewbrown" 
-          name="Profile"
-          handle="profile"
-          active={props.active} />
-      }
-    
-      return (
-        <nav>
-          <Logo className='logo' />
-          <DesktopNavigationLink url="/" 
-            name="Home"
-            handle="home"
-            active={props.active} />
-          {notificationsLink}
-          {messagesLink}
-          {profileLink}
-          <DesktopNavigationLink url="/#" 
-            name="More" 
-            handle="more"
-            active={props.active} />
-          {button}
-          {profile}
-        </nav>
-      );
+  let button;
+  let profile;
+  let notificationsLink;
+  let messagesLink;
+  let profileLink;
+  if (props.user) {
+    // button = <CrudButton setPopped={props.setPopped} />;
+    // profile = <ProfileInfo user={props.user} />;
+    notificationsLink = (
+      <DesktopNavigationLink
+        url="/notifications"
+        name="Notifications"
+        handle="notifications"
+        active={props.active}
+      />
+    );
+    messagesLink = (
+      <DesktopNavigationLink
+        url="/messages"
+        name="Messages"
+        handle="messages"
+        active={props.active}
+      />
+    );
+    profileLink = (
+      <DesktopNavigationLink
+        url="/@smitgabani"
+        name="Profile"
+        handle="profile"
+        active={props.active}
+      />
+    );
+  }
+
+  return (
+    <nav>
+      <Logo className="logo" />
+      <DesktopNavigationLink
+        url="/"
+        name="Home"
+        handle="home"
+        active={props.active}
+      />
+      {notificationsLink}
+      {messagesLink}
+      {profileLink}
+      <DesktopNavigationLink
+        url="/#"
+        name="More"
+        handle="more"
+        active={props.active}
+      />
+      {button}
+      {profile}
+    </nav>
+  );
 }

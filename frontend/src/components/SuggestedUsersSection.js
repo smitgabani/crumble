@@ -1,4 +1,4 @@
-import './SuggestedUserSection.css';
+import './css/SuggestedUserSection.css';
 import SuggestedUserItem from '../components/SuggestedUserItem';
 
 export default function SuggestedUsersSection(props) {

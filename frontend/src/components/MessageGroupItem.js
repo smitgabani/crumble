@@ -1,4 +1,4 @@
-import './MessageGroupItem.css';
+import './css/MessageGroupItem.css';
 import { Link } from "react-router-dom";
 import { DateTime } from 'luxon';
 import { useParams } from 'react-router-dom';

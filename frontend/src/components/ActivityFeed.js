@@ -1,4 +1,4 @@
-import './ActivityFeed.css';
+import './css/ActivityFeed.css';
 import ActivityItem from './ActivityItem';
 
 export default function ActivityFeed(props) {

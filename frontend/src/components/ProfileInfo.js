@@ -1,4 +1,4 @@
-import './ProfileInfo.css';
+import './css/ProfileInfo.css';
 import {ReactComponent as ElipsesIcon} from './svg/elipses.svg';
 import React from "react";
 

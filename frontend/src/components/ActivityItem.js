@@ -1,4 +1,4 @@
-import './ActivityItem.css';
+import './css/ActivityItem.css';
 
 import ActivityContent  from '../components/ActivityContent';
 import ActivityActionReply  from '../components/ActivityActionReply';

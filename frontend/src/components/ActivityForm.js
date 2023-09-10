@@ -1,4 +1,4 @@
-import './ActivityForm.css';
+import './css/ActivityForm.css';
 import React from "react";
 import process from 'process';
 import {ReactComponent as BombIcon} from './svg/bomb.svg';
