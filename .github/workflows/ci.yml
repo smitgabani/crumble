@@ -33,6 +33,9 @@ jobs:
 
   docker-hub:
     name: Build and Push to Docker Hub
+    defaults:
+      run:
+        working-directory: ./backend
     # Don't bother running this job unless the other three all pass
     needs: [build]
     runs-on: ubuntu-latest
@@ -51,8 +54,6 @@ jobs:
 
       # Build and Push an Image to Docker Hub
       - name: Build and push
-        run:
-          working-directory: ./backend
         env:
           # Define an Environment Variable with our Docker Hub Repo
           # Replace `username` with your Docker Hub username and `fragments
