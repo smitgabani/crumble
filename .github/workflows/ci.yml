@@ -13,6 +13,9 @@ on:
 jobs:
   build:
     runs-on: ubuntu-latest
+    defaults:
+      run:
+        working-directory: ./backend
     strategy:
       matrix:
         python-version: ["3.7", "3.8"]
@@ -27,13 +30,15 @@ jobs:
       - name: Install Dependencies
         run: |
           pip install -r requirements.txt
-        working-directory: ./backend
 
   docker-hub:
     name: Build and Push to Docker Hub
     # Don't bother running this job unless the other three all pass
     needs: [build]
     runs-on: ubuntu-latest
+    defaults:
+      run:
+        working-directory: ./backend
     steps:
       # Set up buildx for optimal Docker Builds, see:
       # https://github.com/docker/setup-buildx-action
@@ -49,7 +54,6 @@ jobs:
 
       # Build and Push an Image to Docker Hub
       - name: Build and push
-        working-directory: ./backend
         env:
           # Define an Environment Variable with our Docker Hub Repo
           # Replace `username` with your Docker Hub username and `fragments
