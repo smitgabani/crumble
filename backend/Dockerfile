@@ -5,7 +5,7 @@ FROM python:3.10-slim-buster as builder
 WORKDIR /backend
 
 # Copy only the requirements file to leverage Docker caching
-COPY requirements.txt .
+COPY requirements.txt requirements.txt
 
 # # Create a virtual environment and install dependencies
 # RUN python -m venv venv && \
