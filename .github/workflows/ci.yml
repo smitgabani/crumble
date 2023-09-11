@@ -35,6 +35,9 @@ jobs:
     # Don't bother running this job unless the other three all pass
     needs: [build]
     runs-on: ubuntu-latest
+    defaults:
+      run:
+        working-directory: ./backend
     steps:
       # Set up buildx for optimal Docker Builds, see:
       # https://github.com/docker/setup-buildx-action
@@ -63,7 +66,6 @@ jobs:
         uses: docker/build-push-action@v2
         with:
           push: true
-          file: ./Dockerfile
-          context: .backend/
+          file: .backend/Dockerfile
           # Use 3 tags :sha-sha-7d821bd14e0d6c381dc57a5369ae1a3a9220664f, :main, and :latest
           tags: ${{ env.DOCKERHUB_REPO }}:${{ env.SHA_TAG }}, ${{ env.DOCKERHUB_REPO }}:main, ${{ env.DOCKERHUB_REPO }}:latest
