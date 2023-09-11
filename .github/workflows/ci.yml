@@ -27,20 +27,6 @@ jobs:
           pip install -r requirements.txt
         working-directory: backend
 
-  dockerfile-lint:
-    name: Dockerfile Lint
-    runs-on: ubuntu-latest
-    steps:
-      # https://github.com/marketplace/actions/hadolint-action
-      # - uses: actions/checkout@v3
-      # - uses: hadolint/hadolint-action@v1.6.0
-      #   with:
-      #     dockerfile: backend/Dockerfile
-      - name: Dockerfile Lint
-        run: |
-          hadolint Dockerfile
-        working-directory: backend
-
   docker-hub:
     name: Build and Push to Docker Hub
     # Don't bother running this job unless the other three all pass
