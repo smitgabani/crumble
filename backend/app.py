@@ -1,4 +1,4 @@
-from flask import Flask
+from flask import Flask, jsonify
 from flask import request
 from flask_cors import CORS, cross_origin
 import os
@@ -25,6 +25,9 @@ cors = CORS(
     methods="OPTIONS,GET,HEAD,POST",
 )
 
+@app.route("/api/message_groups", methods=["GET"])
+def health_check():
+    return jsonify({"status": "ok"}), 200
 
 @app.route("/api/message_groups", methods=["GET"])
 def data_message_groups():
