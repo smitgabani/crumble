@@ -51,6 +51,8 @@ jobs:
 
       # Build and Push an Image to Docker Hub
       - name: Build and push
+        run:
+          working-directory: ./backend
         env:
           # Define an Environment Variable with our Docker Hub Repo
           # Replace `username` with your Docker Hub username and `fragments
