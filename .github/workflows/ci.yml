@@ -33,9 +33,6 @@ jobs:
 
   docker-hub:
     name: Build and Push to Docker Hub
-    defaults:
-      run:
-        working-directory: ./backend
     # Don't bother running this job unless the other three all pass
     needs: [build]
     runs-on: ubuntu-latest
@@ -67,6 +64,7 @@ jobs:
         uses: docker/build-push-action@v2
         with:
           push: true
-          file: ./backend/Dockerfile
+          file: ./Dockerfile
+          context: ./backend
           # Use 3 tags :sha-sha-7d821bd14e0d6c381dc57a5369ae1a3a9220664f, :main, and :latest
           tags: ${{ env.DOCKERHUB_REPO }}:${{ env.SHA_TAG }}, ${{ env.DOCKERHUB_REPO }}:main, ${{ env.DOCKERHUB_REPO }}:latest
