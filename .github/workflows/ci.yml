@@ -27,7 +27,7 @@ jobs:
       - name: Install Dependencies
         run: |
           pip install -r requirements.txt
-        working-directory: backend
+        working-directory: ./backend
 
   docker-hub:
     name: Build and Push to Docker Hub
@@ -49,6 +49,7 @@ jobs:
 
       # Build and Push an Image to Docker Hub
       - name: Build and push
+        working-directory: ./backend
         env:
           # Define an Environment Variable with our Docker Hub Repo
           # Replace `username` with your Docker Hub username and `fragments
