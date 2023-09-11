@@ -36,9 +36,6 @@ jobs:
     # Don't bother running this job unless the other three all pass
     needs: [build]
     runs-on: ubuntu-latest
-    defaults:
-      run:
-        working-directory: ./backend
     steps:
       # Set up buildx for optimal Docker Builds, see:
       # https://github.com/docker/setup-buildx-action
