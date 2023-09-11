@@ -32,10 +32,14 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       # https://github.com/marketplace/actions/hadolint-action
-      - uses: actions/checkout@v3
-      - uses: hadolint/hadolint-action@v1.6.0
-        with:
-          dockerfile: backend/Dockerfile
+      # - uses: actions/checkout@v3
+      # - uses: hadolint/hadolint-action@v1.6.0
+      #   with:
+      #     dockerfile: backend/Dockerfile
+      - name: Dockerfile Lint
+        run: |
+          hadolint Dockerfile
+        working-directory: backend
 
   docker-hub:
     name: Build and Push to Docker Hub
