@@ -30,26 +30,6 @@ jobs:
         run: |
           python run_tests.py
         working-directory: backend
-  unit-tests:
-    name: Unit Tests
-    runs-on: ubuntu-latest
-    steps:
-      - name: Check out code
-        uses: actions/checkout@v3
-
-      - name: Set up Python
-        uses: actions/setup-python@v2
-        with:
-          python-version: 3.10
-
-      - name: Install Dependencies
-        run: |
-          pip install -r requirements.txt
-        working-directory: backend
-      - name: Run Tests
-        run: |
-          python run_tests.py
-        working-directory: backend
 
   dockerfile-lint:
     name: Dockerfile Lint
