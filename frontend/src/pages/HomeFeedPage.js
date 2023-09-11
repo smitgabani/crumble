@@ -26,8 +26,9 @@ export default function HomeFeedPage() {
     const loadData = async () => {
         try {
             const backend_url = `${process.env.REACT_APP_BACKEND_URL}/api/activities/home`
+            console.log(process.env.REACT_APP_BACKEND_URL)
             const res = await fetch(backend_url, {
-                method: "GET"
+                method: "GET",
             });
             let resJson = await res.json();
             if (res.status === 200) {
@@ -37,7 +38,6 @@ export default function HomeFeedPage() {
               }
         } catch (err) {
             console.error("Home activities: /api/activities/home could not be fetched due to ",err)
-            console.log(process.env.REACT_APP_BACKEND_URL)
         }
     }
 
