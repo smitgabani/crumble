@@ -1,4 +1,4 @@
-from flask import Flask, jsonify
+from flask import Flask
 from flask import request
 from flask_cors import CORS, cross_origin
 import os
@@ -11,31 +11,19 @@ from services.search_activities import *
 from services.message_groups import *
 from services.messages import *
 from services.create_message import *
-
-# from services.ShowActivity import *
-
+from services.show_activity import *
 
 app = Flask(__name__)
-frontend = os.getenv('FRONTEND_URL')
-backend = os.getenv('BACKEND_URL')
+frontend = os.getenv("FRONTEND_URL")
+backend = os.getenv("BACKEND_URL")
 origins = [frontend, backend]
 cors = CORS(
-  app, 
-  resources={r"/api/*": {"origins": origins}},
-  expose_headers="location,link",
-  allow_headers="content-type,if-modified-since",
-  methods="OPTIONS,GET,HEAD,POST"
+    app,
+    resources={r"/api/*": {"origins": origins}},
+    expose_headers="location,link",
+    allow_headers="content-type,if-modified-since",
+    methods="OPTIONS,GET,HEAD,POST",
 )
-
-
-@app.route("/api", methods=["GET"])
-def health_check():
-    user_handle = "smitgabani"
-    success = {
-        "status": "ok",
-        "user_handle": user_handle,
-    }
-    return jsonify(success)
 
 
 @app.route("/api/message_groups", methods=["GET"])
@@ -122,10 +110,10 @@ def data_activities():
     return
 
 
-# @app.route("/api/activities/<string:activity_uuid>", methods=['GET'])
-# def data_show_activity(activity_uuid):
-#   data = ShowActivity.run(activity_uuid=activity_uuid)
-#   return data, 200
+@app.route("/api/activities/<string:activity_uuid>", methods=["GET"])
+def data_show_activity(activity_uuid):
+    data = ShowActivity.run(activity_uuid=activity_uuid)
+    return data, 200
 
 
 @app.route("/api/activities/<string:activity_uuid>/reply", methods=["POST", "OPTIONS"])
@@ -142,4 +130,4 @@ def data_activities_reply(activity_uuid):
 
 
 if __name__ == "__main__":
-    app.run(debug=True, port=5000)
+    app.run(debug=True)

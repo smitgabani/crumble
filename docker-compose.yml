@@ -1,0 +1,46 @@
+version: "3.8"
+services:
+  backend:
+    environment:
+      # Set the FRONTEND_URL environment variable for the Flask backend service.
+      # This variable includes the Gitpod workspace ID and cluster host in the URL.
+      FRONTEND_URL: "https://3000-${GITPOD_WORKSPACE_ID}.${GITPOD_WORKSPACE_CLUSTER_HOST}"
+      
+      # Set the BACKEND_URL environment variable for the Flask backend service.
+      # This variable also includes the Gitpod workspace ID and cluster host in the URL.
+      BACKEND_URL: "https://4567-${GITPOD_WORKSPACE_ID}.${GITPOD_WORKSPACE_CLUSTER_HOST}"
+      
+    # Build the backend service using the Dockerfile located in the './backend' directory.
+    build: ./backend
+    
+    # Map port 4567 on the host to port 4567 on the container.
+    ports:
+      - "4567:4567"
+      
+    # Create a volume to link the './backend' directory with the '/backend' directory in the container.
+    volumes:
+      - ./backend:/backend
+
+  frontend:
+    environment:
+      # Set the REACT_APP_BACKEND_URL environment variable for the React frontend service.
+      # This variable includes the Gitpod workspace ID and cluster host in the URL.
+      REACT_APP_BACKEND_URL: "https://4567-${GITPOD_WORKSPACE_ID}.${GITPOD_WORKSPACE_CLUSTER_HOST}"
+    
+    # Build the frontend service using the Dockerfile located in the './frontend' directory.
+    build: ./frontend
+    
+    # Map port 3000 on the host to port 3000 on the container.
+    ports:
+      - "3000:3000"
+    
+    # Create a volume to link the './frontend' directory with the '/frontend' directory in the container.
+    volumes:
+      - ./frontend:/frontend
+
+# Define a custom Docker network named 'internal-network' with the bridge driver.
+# This network can be used for communication between containers.
+networks: 
+  internal-network:
+    driver: bridge
+    name: crumble
